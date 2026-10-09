@@ -10,7 +10,7 @@ HTML/CSS/JS estático, 5 páginas. Sem build obrigatório.
 Bibliotecas via CDN: GSAP 3.12.5 + ScrollTrigger (cdnjs), Lenis 1.1.13 (jsDelivr). Fontes: Host Grotesk, Inter, Geist Mono (Google Fonts).
 
 ## Pendências (procure por `TODO` / `data-todo`)
-- CNPJ, endereço completo e e-mail comercial (rodapé e Contato) — hoje são placeholders
+- Endereço completo e e-mail comercial (rodapé e Contato) — hoje são placeholders
 - Função de cada pessoa do time (Quem Somos)
 - Link da Política de Privacidade
 - Cases da página Resultados: preencher o array `CASES` em `assets/js/main.js` (o filtro por camada já funciona)

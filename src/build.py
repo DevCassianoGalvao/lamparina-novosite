@@ -58,11 +58,11 @@ def nav(active):
     <a class="nav__logo" href="index.html" aria-label="Lamparina Hub, página inicial"><img src="assets/img/logo.webp" alt="Agência Lamparina" width="900" height="346"></a>
     <ul class="nav__links" id="navLinks"><span class="nav__hover" aria-hidden="true"></span>{links}</ul>
     <div class="nav__right">
-      <a class="btn btn--primary btn--sm nav__cta-desk" href="{RAIOX}" data-magnetic>Sessão Estratégica {icon("arrow")}</a>
+      <a class="btn btn--green btn--sm nav__cta-desk" href="{RAIOX}" data-magnetic>Sessão Estratégica {icon("arrow")}</a>
       <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
     </div>
   </div>
-  <nav class="nav__mobile" id="navMobile" aria-label="Menu">{mob}<a class="btn btn--primary" href="{RAIOX}">Sessão Estratégica {icon("arrow")}</a></nav>
+  <nav class="nav__mobile" id="navMobile" aria-label="Menu">{mob}<a class="btn btn--green" href="{RAIOX}">Sessão Estratégica {icon("arrow")}</a></nav>
 </header>'''
 
 def footer():
@@ -74,8 +74,8 @@ def footer():
     <div class="footer__grid">
       <div class="footer__brand">
         <img src="assets/img/logo.webp" alt="Agência Lamparina" width="900" height="346" loading="lazy">
-        <!-- TODO: endereço completo e CNPJ reais -->
-        <p>Santarém, Pará<br><span data-todo="cnpj">CNPJ 00.000.000/0000-00</span></p>
+        <!-- TODO: endereço completo -->
+        <p>Santarém, Pará<br>CNPJ 57.928.216/0001-39</p>
         <span class="kommo"><i></i>Parceiro Kommo</span>
       </div>
       <div>
