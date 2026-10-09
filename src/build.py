@@ -6,7 +6,8 @@ import pathlib, re
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "src" / "pages"
 
-RAIOX = "https://lamparinahub.com/raiox/"
+RAIOX = "https://lamparinahub.com/raiox/"  # landing (não usada nos botões)
+FORM = "contato.html#contatoForm"  # destino de todos os botões
 WHATS = "https://wa.me/5593984128030"
 INSTA = "https://instagram.com/lamparina.hub/"
 
@@ -58,11 +59,11 @@ def nav(active):
     <a class="nav__logo" href="index.html" aria-label="Lamparina Hub, página inicial"><img src="assets/img/logo.webp" alt="Agência Lamparina" width="900" height="346"></a>
     <ul class="nav__links" id="navLinks"><span class="nav__hover" aria-hidden="true"></span>{links}</ul>
     <div class="nav__right">
-      <a class="btn btn--green btn--sm nav__cta-desk" href="{RAIOX}" data-magnetic>Sessão Estratégica {icon("arrow")}</a>
+      <a class="btn btn--green btn--sm nav__cta-desk" href="{FORM}" data-magnetic>Sessão Estratégica {icon("arrow")}</a>
       <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
     </div>
   </div>
-  <nav class="nav__mobile" id="navMobile" aria-label="Menu">{mob}<a class="btn btn--green" href="{RAIOX}">Sessão Estratégica {icon("arrow")}</a></nav>
+  <nav class="nav__mobile" id="navMobile" aria-label="Menu">{mob}<a class="btn btn--green" href="{FORM}">Sessão Estratégica {icon("arrow")}</a></nav>
 </header>'''
 
 def footer():
@@ -150,7 +151,7 @@ def layout(fname, title, desc, body, intro=False):
 </html>
 '''
 
-def cta(title, sub, btn, href="contato.html"):
+def cta(title, sub, btn, href=FORM):
     return f'''<section class="section section--tight">
   <div class="wrap">
     <div class="cta-band" data-reveal>
@@ -166,7 +167,7 @@ def render(text):
     text = re.sub(r"\{\{cta:([^|]+)\|([^|]+)\|([^}]+)\}\}", lambda m: cta(m.group(1), m.group(2), m.group(3)), text)
     # {{icon:name}} e {{raiox}} etc.
     text = re.sub(r"\{\{icon:(\w+)\}\}", lambda m: icon(m.group(1)), text)
-    return text.replace("{{raiox}}", RAIOX).replace("{{whats}}", WHATS).replace("{{insta}}", INSTA)
+    return text.replace("{{form}}", FORM).replace("{{raiox}}", RAIOX).replace("{{whats}}", WHATS).replace("{{insta}}", INSTA)
 
 for fname, label, title, desc in PAGES:
     body = render((SRC / fname).read_text(encoding="utf-8"))
