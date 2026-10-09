@@ -17,9 +17,8 @@
         <div class="card cinfo__item cinfo__item--wide" data-spot data-reveal>
           <span class="ic">{{icon:pin}}</span><div><span class="mono">Localização</span><b>Norte do País</b></div>
         </div>
-        <!-- TODO: e-mail comercial real -->
         <div class="card cinfo__item cinfo__item--wide" data-spot data-reveal>
-          <span class="ic">{{icon:mail}}</span><div><span class="mono">E-mail comercial</span><b data-todo="email">contato@lamparinahub.com</b></div>
+          <span class="ic">{{icon:mail}}</span><div><span class="mono">E-mail comercial</span><b>contatoagencialamparina@gmail.com</b></div>
         </div>
                 <div class="card cinfo__item cinfo__item--wide" data-spot data-reveal>
           <span class="ic">{{icon:doc}}</span>
@@ -30,6 +29,8 @@
 
     <form class="card form" id="contatoForm" novalidate data-spot data-reveal>
       <div class="form__grid">
+        <!-- honeypot anti-spam: fica invisível pra pessoas -->
+        <div class="hp" aria-hidden="true"><label for="f-website">Site</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <div class="field">
           <label for="f-nome">Seu nome</label>
           <input class="input" id="f-nome" name="nome" type="text" autocomplete="name" required>

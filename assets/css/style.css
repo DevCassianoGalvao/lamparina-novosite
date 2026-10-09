@@ -580,6 +580,8 @@ p { margin: 0; }
 .opts.is-invalid .opt span { border-color: rgba(255,77,77,.6); }
 @media (max-width: 480px) { .opts { grid-template-columns: 1fr; } }
 .form .btn { width: 100%; margin-top: 8px; }
+.hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.btn.is-error { background: linear-gradient(180deg, #FF7A6A, #E5484D); white-space: normal; }
 .btn.is-sent { background: linear-gradient(180deg, #4BE592, #2EC46F); box-shadow: 0 10px 30px -8px rgba(61,220,132,.5); }
 
 /* ---------- Footer ---------- */

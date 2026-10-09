@@ -16,7 +16,7 @@
   // { logo: "assets/img/marcas/x.webp", cliente: "", segmento: "", tempo: "", camada: "aquisicao"|"presenca"|"comercial", antes: "", resultado: "", citacao: "" }
   const CASES = [];
   // Endpoint do formulário de contato (deixe vazio enquanto não houver integração)
-  const FORM_ENDPOINT = "";
+  const FORM_ENDPOINT = "api/contato.php";
 
   /* ---------- Utilidades ---------- */
   const $ = (s, c = document) => c.querySelector(s);
@@ -767,7 +767,21 @@
       }
       const data = Object.fromEntries(new FormData(form));
       btn.disabled = true;
-      try { if (FORM_ENDPOINT) await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) }); } catch (err) {}
+      btn.innerHTML = "Enviando…";
+      let sent = !FORM_ENDPOINT;
+      try {
+        if (FORM_ENDPOINT) {
+          const r = await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+          const j = await r.json().catch(() => ({}));
+          sent = r.ok && j.ok !== false;
+        }
+      } catch (err) { sent = false; }
+      if (!sent) {
+        btn.classList.add("is-error");
+        btn.innerHTML = "Não foi possível enviar. Tente pelo WhatsApp.";
+        setTimeout(() => { btn.disabled = false; btn.classList.remove("is-error"); btn.innerHTML = original; }, 5000);
+        return;
+      }
       btn.classList.add("is-sent");
       btn.innerHTML = `Enviado ${'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'}`;
       setTimeout(() => { form.reset(); btn.disabled = false; btn.classList.remove("is-sent"); btn.innerHTML = original; }, 4000);

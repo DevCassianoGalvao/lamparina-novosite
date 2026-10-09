@@ -1,0 +1,6 @@
+# Bloqueia acesso direto a arquivos sensíveis (.env, .git, scripts de build)
+<FilesMatch "^\.(env|git|htaccess)">
+  Require all denied
+</FilesMatch>
+RedirectMatch 404 /\.git
+RedirectMatch 404 ^/src/
