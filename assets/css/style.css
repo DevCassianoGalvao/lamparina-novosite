@@ -595,8 +595,7 @@ p { margin: 0; }
 .social a { width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--line-2); display: grid; place-items: center; color: var(--mute); transition: all .3s; }
 .social a:hover { color: var(--orange-hi); border-color: var(--orange-line); background: var(--orange-soft); }
 .social svg { width: 18px; height: 18px; }
-.kommo { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line-2); color: var(--mute); font-size: 12.5px; }
-.kommo i { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
+.kommo { display: block; width: 124px; height: auto; margin-top: 22px; }
 .footer__bottom { margin-top: 56px; padding-block: 22px 28px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--dim); font-size: 13px; }
 .footer__bottom a:hover { color: var(--text); }
 .footer__giant { position: absolute; z-index: 0; left: 50%; bottom: -6%; transform: translateX(-50%); width: min(1200px, 120%); pointer-events: none; }

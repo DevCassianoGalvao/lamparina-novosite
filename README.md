@@ -15,4 +15,3 @@ Bibliotecas via CDN: GSAP 3.12.5 + ScrollTrigger (cdnjs), Lenis 1.1.13 (jsDelivr
 - Link da Política de Privacidade
 - Cases da página Resultados: preencher o array `CASES` em `assets/js/main.js` (o filtro por camada já funciona)
 - Integração do formulário: definir `FORM_ENDPOINT` em `assets/js/main.js`
-- Selo "Parceiro Kommo" no rodapé: remover se a Lamparina não quiser exibir
