@@ -14,7 +14,7 @@ PAGES = [
     # arquivo, rótulo no menu, <title>, meta description
     ("index.html", "Home", "Lamparina Hub", "Estruturamos o comercial de empresas que já faturam bem, mas ainda dependem de sorte, indicação ou vendedor bom de improviso."),
     ("o-que-fazemos.html", "O Que Fazemos", "O Que Fazemos · Lamparina Hub", "Diagnóstico primeiro. Estrutura depois. Aquisição, Presença e Comercial."),
-    ("quem-somos.html", "Quem Somos", "Quem Somos · Lamparina Hub", "A Lamparina nasceu em Santarém, no Pará. A gente vende o que já usou pra crescer."),
+    ("quem-somos.html", "Quem Somos", "Quem Somos · Lamparina Hub", "A Lamparina nasceu no Norte do País. A gente vende o que já usou pra crescer."),
     ("resultados.html", "Resultados", "Resultados · Lamparina Hub", "Quem já destravou o comercial com a Lamparina."),
     ("contato.html", "Contato", "Contato · Lamparina Hub", "Vamos descobrir onde seu comercial trava. Resposta em até 24h."),
 ]
@@ -75,7 +75,7 @@ def footer():
       <div class="footer__brand">
         <img src="assets/img/logo.webp" alt="Agência Lamparina" width="900" height="346" loading="lazy">
         <!-- TODO: endereço completo -->
-        <p>Santarém, Pará<br>CNPJ 57.928.216/0001-39</p>
+        <p>Norte do País<br>CNPJ 57.928.216/0001-39</p>
         <span class="kommo"><i></i>Parceiro Kommo</span>
       </div>
       <div>
@@ -117,7 +117,7 @@ def layout(fname, title, desc, body, intro=False):
   </div>
   <div class="intro__meta">
     <div class="intro__bar"><i></i></div>
-    <div class="intro__row mono"><span>Santarém · PA</span><b id="introPct">000</b></div>
+    <div class="intro__row mono"><span>Norte do País</span><b id="introPct">000</b></div>
   </div>
 </div>''' if intro else ""
     return f'''<!doctype html>

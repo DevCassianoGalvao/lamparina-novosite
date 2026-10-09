@@ -105,26 +105,20 @@ p { margin: 0; }
 }
 .btn svg { width: 18px; height: 18px; flex: none; transition: transform .4s var(--ease); }
 .btn:hover svg.arr { transform: translateX(4px); }
-.btn--primary {
+/* Botões: verde WhatsApp em degradê, conteúdo preto */
+.btn--primary, .btn--green {
   color: #0A0A0A;
-  background: linear-gradient(180deg, #FF7A1A 0%, var(--orange) 55%, #E84F00 100%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -2px 0 rgba(0,0,0,.18), 0 10px 30px -8px rgba(255,90,0,.55), 0 0 0 1px rgba(255,120,30,.6);
+  background: linear-gradient(180deg, #5CEB94 0%, #25D366 45%, #179C50 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -2px 0 rgba(0,0,0,.16), 0 10px 30px -8px rgba(37,211,102,.5), 0 0 0 1px rgba(80,230,140,.6);
   overflow: hidden;
 }
-.btn--primary::before {
+.btn--primary::before, .btn--green::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: radial-gradient(160px circle at var(--mx) var(--my), rgba(255,220,180,.55), transparent 60%);
+  background: radial-gradient(160px circle at var(--mx) var(--my), rgba(220,255,230,.6), transparent 60%);
   opacity: 0; transition: opacity .3s;
 }
-.btn--primary:hover::before { opacity: 1; }
-.btn--primary:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 -2px 0 rgba(0,0,0,.18), 0 18px 50px -10px rgba(255,90,0,.75), 0 0 0 1px rgba(255,150,60,.8); }
-.btn--green {
-  color: #FFFFFF;
-  background: linear-gradient(180deg, #3BE07A 0%, #25D366 40%, #128C4A 100%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -2px 0 rgba(0,0,0,.18), 0 10px 30px -8px rgba(37,211,102,.5), 0 0 0 1px rgba(60,224,122,.55);
-  text-shadow: 0 1px 1px rgba(0,60,25,.35);
-}
-.btn--green:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 -2px 0 rgba(0,0,0,.18), 0 16px 44px -10px rgba(37,211,102,.7), 0 0 0 1px rgba(90,235,140,.8); }
+.btn--primary:hover::before, .btn--green:hover::before { opacity: 1; }
+.btn--primary:hover, .btn--green:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -2px 0 rgba(0,0,0,.16), 0 18px 48px -10px rgba(37,211,102,.7), 0 0 0 1px rgba(120,240,165,.85); }
 .btn--ghost { color: var(--text); background: rgba(255,255,255,.04); border: 1px solid var(--line-2); }
 .btn--ghost:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.25); }
 .btn--lg { min-height: 60px; padding: 0 32px; font-size: 1.0625rem; border-radius: 16px; }
@@ -221,7 +215,9 @@ p { margin: 0; }
 .hero__title { font-size: var(--fs-hero); letter-spacing: -0.045em; line-height: .98; margin-top: 28px; }
 .hero__title .line { display: block; }
 .hero__sub { margin: 28px auto 0; font-size: var(--fs-lead); color: var(--mute); max-width: 46ch; }
-.hero__ctas { margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.hero__ctas { margin-top: 36px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.hero__ask { color: var(--text); font-size: 1.05rem; font-weight: 500; }
+@media (max-width: 640px) { .hero__ctas .btn { width: auto; justify-content: center; } }
 .hero__how { margin-top: 22px; display: inline-flex; align-items: center; gap: 8px; color: var(--dim); font-size: var(--fs-small); transition: color .3s; }
 .hero__how:hover { color: var(--text); }
 .hero__how svg { width: 16px; height: 16px; animation: bob 2s ease-in-out infinite; }

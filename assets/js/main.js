@@ -226,7 +226,7 @@
 
   /* ---------- Spotlight nos cards e botões ---------- */
   if (fine) {
-    $$("[data-spot], .btn--primary").forEach((el) => {
+    $$("[data-spot], .btn--primary, .btn--green").forEach((el) => {
       el.addEventListener("pointermove", (e) => {
         const r = el.getBoundingClientRect();
         el.style.setProperty("--mx", `${e.clientX - r.left}px`);
