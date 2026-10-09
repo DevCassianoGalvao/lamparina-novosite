@@ -1,6 +1,60 @@
-# Bloqueia acesso direto a arquivos sensíveis (.env, .git, scripts de build)
-<FilesMatch "^\.(env|git|htaccess)">
+# ============================================================
+# Lamparina Hub — www.lamparinahub.com (Apache / hospedagem cPanel)
+# ============================================================
+DirectoryIndex index.html index.php
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Libera validação de SSL (Let's Encrypt / AutoSSL)
+  RewriteRule ^\.well-known/ - [L]
+
+  # 1) Força HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://www.lamparinahub.com%{REQUEST_URI} [R=301,L]
+
+  # 2) lamparinahub.com -> www.lamparinahub.com (mantém o caminho, ex.: /raiox/)
+  RewriteCond %{HTTP_HOST} ^lamparinahub\.com$ [NC]
+  RewriteRule ^ https://www.lamparinahub.com%{REQUEST_URI} [R=301,L]
+
+  # 3) /index.html -> /
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^index\.html$ / [R=301,L]
+
+  # 4) Bloqueia pasta de build, README e arquivos ocultos (.env, .git...)
+  RewriteRule ^src/ - [F,L]
+  RewriteRule ^README\.md$ - [F,L]
+  RewriteRule (^|/)\. - [F,L]
+</IfModule>
+
+# Redundância caso mod_rewrite esteja desligado
+<FilesMatch "^\.">
   Require all denied
 </FilesMatch>
-RedirectMatch 404 /\.git
-RedirectMatch 404 ^/src/
+
+# Compressão
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml text/xml application/xml
+</IfModule>
+
+# Cache: HTML sempre atualizado; CSS/JS 1 semana; imagens 30 dias
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType text/javascript "access plus 7 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+</IfModule>
+
+# Segurança básica
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>

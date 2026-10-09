@@ -6,6 +6,7 @@ import pathlib, re
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "src" / "pages"
 
+SITE = "https://www.lamparinahub.com"  # domínio oficial (canonical, Open Graph, sitemap)
 RAIOX = "https://lamparinahub.com/raiox/"  # landing (não usada nos botões)
 FORM = "contato.html#contatoForm"  # destino de todos os botões
 WHATS = "https://wa.me/5593984128030?text=Ol%C3%A1%21%20Gostaria%20de%20receber%20uma%20Sess%C3%A3o%20Estrat%C3%A9gica."  # mensagem pré-pronta
@@ -99,6 +100,7 @@ def footer():
 </footer>'''
 
 def layout(fname, title, desc, body, intro=False):
+    url = SITE + '/' + ('' if fname == 'index.html' else fname)
     intro_html = '''
 <div class="intro" id="intro" aria-hidden="true">
   <div class="intro__panel intro__panel--t"></div>
@@ -124,6 +126,20 @@ def layout(fname, title, desc, body, intro=False):
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#0A0A0A">
+<link rel="canonical" href="{url}">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/img/favicon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Lamparina Hub">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{SITE}/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
@@ -169,3 +185,11 @@ for fname, label, title, desc in PAGES:
     out = layout(fname, title, desc, body, intro=(fname == "index.html"))
     (ROOT / fname).write_text(out, encoding="utf-8")
     print("ok", fname)
+
+# sitemap.xml e robots.txt
+import datetime
+hoje = datetime.date.today().isoformat()
+urls = "".join(f"  <url><loc>{SITE}/{'' if f == 'index.html' else f}</loc><lastmod>{hoje}</lastmod></url>\n" for f, *_ in PAGES)
+(ROOT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n', encoding="utf-8")
+(ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /src/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+print("ok sitemap.xml, robots.txt")

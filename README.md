@@ -26,3 +26,12 @@ O formulário da página Contato envia para `api/contato.php`, que manda o e-mai
 4. Opcional: preencha `ALLOWED_ORIGINS` com o domínio do site para aceitar envios só dele.
 
 Proteções incluídas: validação no servidor, campo invisível anti-robô (honeypot) e limite de 5 envios a cada 10 minutos por IP.
+
+## Publicação em www.lamparinahub.com
+
+- Suba todos os arquivos para a pasta pública do domínio (ex.: `public_html`). A pasta `src/` é só pra gerar as páginas e fica bloqueada pelo `.htaccess`.
+- O `.htaccess` (Apache/cPanel) já força HTTPS, redireciona `lamparinahub.com` → `www.lamparinahub.com` mantendo o caminho (ex.: `/raiox/`), ativa compressão e cache e bloqueia arquivos ocultos.
+- **Instale o SSL antes** (AutoSSL/Let's Encrypt no cPanel). Sem certificado, o redirecionamento pra HTTPS derruba o site.
+- Se a landing `/raiox/` estiver no mesmo servidor, mantenha a pasta dela; o site novo não mexe nela.
+- Depois de publicar: cadastre `https://www.lamparinahub.com/sitemap.xml` no Google Search Console.
+- Se o domínio mudar, troque `SITE` em `src/build.py`, rode `python3 src/build.py` e ajuste o `.htaccess` e o `ALLOWED_ORIGINS` do `.env`.
