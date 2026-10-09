@@ -85,10 +85,6 @@ def footer():
       </div>
       <div>
         <h4>Redes sociais</h4>
-        <ul>
-          <li><a href="{INSTA}" rel="noopener">Instagram @lamparina.hub</a></li>
-          <li><a href="{WHATS}" rel="noopener">WhatsApp (93) 98412-8030</a></li>
-        </ul>
         <div class="social">
           <a href="{INSTA}" aria-label="Instagram" rel="noopener">{icon("insta")}</a>
           <a href="{WHATS}" aria-label="WhatsApp" rel="noopener">{icon("whats")}</a>
@@ -154,11 +150,11 @@ def layout(fname, title, desc, body, intro=False):
 def cta(title, sub, btn, href=FORM):
     return f'''<section class="section section--tight">
   <div class="wrap">
-    <div class="cta-band" data-reveal>
-      <div class="cta-band__flame" data-flame></div>
-      <h2 class="cta-band__title" data-split>{title}</h2>
-      <p class="cta-band__sub">{sub}</p>
-      <a class="btn btn--primary btn--lg cta-band__btn" href="{href}" data-magnetic>{btn} {icon("arrow")}</a>
+    <div class="cta-band" data-seq>
+      <div class="cta-band__flame" data-flame data-seq-item></div>
+      <h2 class="cta-band__title" data-split data-seq-item>{title}</h2>
+      <p class="cta-band__sub" data-seq-item>{sub}</p>
+      <a class="btn btn--primary btn--lg cta-band__btn" href="{href}" data-magnetic data-seq-item>{btn} {icon("arrow")}</a>
     </div>
   </div>
 </section>'''

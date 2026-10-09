@@ -289,8 +289,8 @@ p { margin: 0; }
 @media (max-width: 760px) {
   .app__body { grid-template-columns: 1fr; }
   .app__side { display: none; }
-  .kanban { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .kcol:nth-child(n+3) { display: none; }
+  .app__main { overflow: hidden; }
+  .kanban { width: calc(200% + 12px); grid-template-columns: repeat(4, minmax(0, 1fr)); transition: transform .7s cubic-bezier(.65,0,.25,1); will-change: transform; }
   .kcol { min-height: 250px; }
   .float-note { display: none; }
 }
@@ -518,9 +518,10 @@ p { margin: 0; }
 .checks li.inherit { color: var(--orange-hi); font-weight: 500; }
 @media (max-width: 900px) {
   .stack { grid-template-columns: 1fr; }
-  .stack__vis { position: relative; top: 0; height: 340px; overflow: hidden; }
-  .stack__list { gap: 24px; padding-bottom: 0; }
-  .camada { position: relative; top: 0; }
+  .stack__vis { position: relative; top: 0; height: 420px; overflow: hidden; }
+  .stack__vis .plates { width: min(300px, 72%); margin-top: 90px; }
+  .stack__list { gap: 32vh; padding-bottom: 4vh; }
+  .camada { top: calc(84px + var(--i, 0) * 14px); }
 }
 
 /* ---------- Resultados ---------- */
@@ -590,7 +591,7 @@ p { margin: 0; }
 .footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .footer ul a { color: var(--mute); transition: color .3s; font-size: .95rem; }
 .footer ul a:hover { color: var(--text); }
-.social { display: flex; gap: 8px; margin-top: 18px; }
+.social { display: flex; gap: 8px; }
 .social a { width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--line-2); display: grid; place-items: center; color: var(--mute); transition: all .3s; }
 .social a:hover { color: var(--orange-hi); border-color: var(--orange-line); background: var(--orange-soft); }
 .social svg { width: 18px; height: 18px; }

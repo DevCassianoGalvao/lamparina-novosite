@@ -142,8 +142,12 @@
   const heroIn = () => {
     if (!hasGSAP || reduce) return;
     const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-    if (heroTitle) tl.from($$(".reveal-mask > span", heroTitle), { yPercent: 115, duration: 1.2, stagger: 0.06, onComplete: () => $$(".reveal-mask", heroTitle).forEach((m) => m.classList.add("is-done")) }, 0);
-    tl.from($$("[data-hero]"), { y: 24, opacity: 0, duration: 1, stagger: 0.08 }, 0.25);
+    if (heroTitle) tl.from($$(".reveal-mask > span", heroTitle), { yPercent: 115, duration: 1.2, stagger: 0.06, delay: 0.1, onComplete: () => $$(".reveal-mask", heroTitle).forEach((m) => m.classList.add("is-done")) }, 0);
+    const heroItems = $$("[data-hero]");
+    const before = heroTitle ? heroItems.filter((el) => el.compareDocumentPosition(heroTitle) & Node.DOCUMENT_POSITION_FOLLOWING) : [];
+    const after = heroItems.filter((el) => !before.includes(el));
+    if (before.length) tl.from(before, { y: 16, opacity: 0, duration: 0.8, stagger: 0.06 }, 0);
+    tl.from(after, { y: 24, opacity: 0, duration: 1, stagger: 0.1 }, 0.55);
     const stage = $("[data-stage]");
     if (stage) {
       tl.from(stage, { y: 80, opacity: 0, duration: 1.6 }, 0.45);
@@ -196,12 +200,29 @@
 
   /* ---------- Reveal on scroll ---------- */
   if (hasGSAP && window.ScrollTrigger && !reduce) {
-    $$("[data-split]").forEach((h) => {
+    $$("[data-split]").filter((h) => !h.closest("[data-seq]")).forEach((h) => {
       splitWords(h, "mask");
       gsap.from($$(".reveal-mask > span", h), {
         yPercent: 115, duration: 1.1, ease: "expo.out", stagger: 0.04,
         onComplete: () => $$(".reveal-mask", h).forEach((m) => m.classList.add("is-done")),
         scrollTrigger: { trigger: h, start: "top 85%" },
+      });
+    });
+    // sequências: container entra, depois os itens na ordem do HTML (título palavra por palavra)
+    $$("[data-seq]").forEach((box) => {
+      const tl = gsap.timeline({ defaults: { ease: "expo.out" }, scrollTrigger: { trigger: box, start: "top 80%" } });
+      tl.from(box, { y: 40, opacity: 0, duration: 1, clearProps: "transform,opacity" }, 0);
+      let t = 0.25;
+      $$("[data-seq-item]", box).forEach((it) => {
+        if (it.hasAttribute("data-split")) {
+          splitWords(it, "mask");
+          const w = $$(".reveal-mask > span", it);
+          tl.from(w, { yPercent: 115, duration: 1, stagger: 0.05, onComplete: () => $$(".reveal-mask", it).forEach((m) => m.classList.add("is-done")) }, t);
+          t += 0.35 + w.length * 0.05;
+        } else {
+          tl.from(it, { y: 18, opacity: 0, duration: 0.8, clearProps: "transform,opacity" }, t);
+          t += 0.18;
+        }
       });
     });
     ScrollTrigger.batch("[data-reveal]", {
@@ -335,10 +356,34 @@
       });
     };
     let running = false;
+    // celular: o quadro mostra 2 colunas e desliza pra direita/esquerda acompanhando o card
+    const mobile = matchMedia("(max-width: 760px)");
+    let pan = 0, seqCol = 0;
+    const setPan = (p) => {
+      if (!mobile.matches) { kanban.style.transform = ""; pan = 0; return false; }
+      p = Math.max(0, Math.min(2, p));
+      if (p === pan && kanban.style.transform) return false;
+      pan = p;
+      kanban.style.transform = `translateX(${-cols[p].offsetLeft}px)`;
+      return true;
+    };
+    mobile.addEventListener?.("change", () => setPan(pan));
+    setPan(0);
     const step = () => {
       if (!running) return;
-      // escolhe uma coluna com cards (exceto a última) e avança o card do topo
-      const from = [2, 1, 0].filter((c) => $$(".kcard", cols[c]).length)[Math.floor(Math.random() * 2)] ?? 0;
+      // no celular segue as colunas em ordem (0→1, 1→2, 2→3) pra o quadro deslizar; no desktop é aleatório
+      let from;
+      if (mobile.matches) {
+        from = seqCol; let guard = 0;
+        while (!$$(".kcard", cols[from]).length && guard++ < 3) from = (from + 1) % 3;
+        seqCol = (from + 1) % 3;
+      } else from = [2, 1, 0].filter((c) => $$(".kcard", cols[c]).length)[Math.floor(Math.random() * 2)] ?? 0;
+      const moved = setPan(from);
+      if (moved) { setTimeout(() => doMove(from), 750); return; }
+      doMove(from);
+    };
+    const doMove = (from) => {
+      if (!running) return;
       const mover = $(".kcard", cols[from]);
       if (mover) {
         const all = $$(".kcard", kanban);
@@ -589,9 +634,9 @@
       if (hasGSAP && window.ScrollTrigger) {
         ScrollTrigger.create({ trigger: c, start: "top 62%", onEnter: () => set(n), onLeaveBack: () => set(Math.max(1, n - 1)) });
         const next = cards[idx + 1];
-        if (next && !reduce && matchMedia("(min-width: 901px)").matches) {
+        if (next && !reduce) {
           gsap.fromTo(c, { scale: 1, filter: "brightness(1)" }, { scale: 0.93, filter: "brightness(0.38)", ease: "none",
-            scrollTrigger: { trigger: next, start: "top 85%", end: () => `top ${112 + (idx + 1) * 22}px`, scrub: true } });
+            scrollTrigger: { trigger: next, start: "top 85%", end: () => `top ${(innerWidth > 900 ? 112 : 84) + (idx + 1) * (innerWidth > 900 ? 22 : 14)}px`, scrub: true } });
         }
       } else inView(c, (v) => { if (v) set(n); }, { rootMargin: "-45% 0px -45% 0px" });
     });
