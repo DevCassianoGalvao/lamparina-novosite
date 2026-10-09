@@ -1,0 +1,29 @@
+<section class="phero">
+  <div class="lamp" aria-hidden="true"><span class="lamp__beam"></span><canvas class="embers" data-embers></canvas></div>
+  <div class="wrap">
+    <div class="crumb mono" data-hero><a href="index.html">Home</a><span>/</span><b>Resultados</b></div>
+    <h1 data-hero-title><span class="line">Quem já destravou o</span> <span class="line grad">comercial com a gente</span></h1>
+
+    <div class="filter" data-hero role="group" aria-label="Ver por camada">
+      <span class="mono">Ver por camada:</span>
+      <button class="chip" data-filter="aquisicao" aria-pressed="false"><i></i>Aquisição</button>
+      <button class="chip" data-filter="presenca" aria-pressed="false"><i></i>Presença</button>
+      <button class="chip" data-filter="comercial" aria-pressed="false"><i></i>Comercial</button>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight" style="padding-top:0">
+  <div class="wrap">
+    <!--
+      CASES: a grade abaixo é montada pelo main.js a partir do array CASES (assets/js/main.js).
+      Cada case: { logo, cliente, segmento, tempo, camada: 'aquisicao'|'presenca'|'comercial', antes, resultado, citacao }
+      Enquanto o array estiver vazio, a grade não aparece.
+    -->
+    <div class="cases" data-cases></div>
+
+    <div class="logo-wall" data-logowall></div>
+  </div>
+</section>
+
+{{cta:O próximo case pode ser o seu.|Quer um resultado assim na sua empresa?|Quero o meu}}

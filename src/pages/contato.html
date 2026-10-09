@@ -1,0 +1,61 @@
+<section class="phero" style="padding-bottom:clamp(80px,10vw,140px)">
+  <div class="lamp" aria-hidden="true"><span class="lamp__beam"></span><canvas class="embers" data-embers></canvas></div>
+  <div class="wrap contact">
+    <div class="contact__head">
+      <div class="crumb mono" data-hero><a href="index.html">Home</a><span>/</span><b>Contato</b></div>
+      <h1 data-hero-title style="font-size:clamp(2.4rem,5vw,4.4rem)"><span class="line">Vamos descobrir onde</span> <span class="line grad">seu comercial trava.</span></h1>
+      <p class="lead" data-hero>Preencha o formulário ou chama direto no WhatsApp. Resposta em até 24h.</p>
+    </div>
+
+    <div class="cinfo">
+        <a class="card cinfo__item" href="{{whats}}" rel="noopener" data-spot data-reveal>
+          <span class="ic">{{icon:whats}}</span><span class="mono">WhatsApp direto</span><b>(93) 98412-8030</b>
+        </a>
+        <a class="card cinfo__item" href="{{insta}}" rel="noopener" data-spot data-reveal>
+          <span class="ic">{{icon:insta}}</span><span class="mono">Instagram</span><b>@lamparina.hub</b>
+        </a>
+        <div class="card cinfo__item cinfo__item--wide" data-spot data-reveal>
+          <span class="ic">{{icon:pin}}</span><div><span class="mono">Santarém, Pará</span><b>2°26′S 54°42′W</b></div>
+        </div>
+        <!-- TODO: e-mail comercial real -->
+        <div class="card cinfo__item cinfo__item--wide" data-spot data-reveal>
+          <span class="ic">{{icon:mail}}</span><div><span class="mono">E-mail comercial</span><b data-todo="email">contato@lamparinahub.com</b></div>
+        </div>
+        <!-- TODO: endereço físico completo e CNPJ reais -->
+        <div class="card cinfo__item cinfo__item--wide" data-spot data-reveal>
+          <span class="ic">{{icon:doc}}</span>
+          <div><span class="mono">Endereço</span><b data-todo="endereco">Rua —, nº —, Santarém, Pará</b></div>
+          <div><span class="mono">CNPJ</span><b data-todo="cnpj">00.000.000/0000-00</b></div>
+        </div>
+    </div>
+
+    <form class="card form" id="contatoForm" novalidate data-spot data-reveal>
+      <div class="form__grid">
+        <div class="field">
+          <label for="f-nome">Seu nome</label>
+          <input class="input" id="f-nome" name="nome" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-whats">Seu WhatsApp</label>
+          <input class="input" id="f-whats" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(93) 99999-9999" required>
+        </div>
+        <div class="field">
+          <label for="f-empresa">Nome da sua empresa</label>
+          <input class="input" id="f-empresa" name="empresa" type="text" autocomplete="organization" required>
+        </div>
+        <div class="field">
+          <fieldset>
+            <legend>Faturamento</legend>
+            <div class="opts" id="f-fat">
+              <label class="opt"><input type="radio" name="faturamento" id="fat-1" value="até R$ 100 mil" required><span>até R$ 100 mil</span></label>
+              <label class="opt"><input type="radio" name="faturamento" id="fat-2" value="R$ 100 mil a R$ 400 mil"><span>R$ 100 mil a R$ 400 mil</span></label>
+              <label class="opt"><input type="radio" name="faturamento" id="fat-3" value="R$ 400 mil a R$ 1 milhão"><span>R$ 400 mil a R$ 1 milhão</span></label>
+              <label class="opt"><input type="radio" name="faturamento" id="fat-4" value="acima de R$ 1 milhão"><span>acima de R$ 1 milhão</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <button class="btn btn--primary btn--lg" type="submit" data-magnetic>Enviar {{icon:arrow}}</button>
+      </div>
+    </form>
+  </div>
+</section>

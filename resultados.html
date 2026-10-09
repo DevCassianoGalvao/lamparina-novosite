@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Resultados · Lamparina Hub</title>
+<meta name="description" content="Quem já destravou o comercial com a Lamparina.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>try{if(false&&!sessionStorage.getItem("lp-intro")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("has-intro")}catch(e){}</script>
+</head>
+<body data-page="resultados">
+
+<div class="pt" id="pt" aria-hidden="true"><div class="pt__bg"></div><div class="pt__line"></div></div>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Lamparina Hub, página inicial"><img src="assets/img/logo.webp" alt="Agência Lamparina" width="900" height="346"></a>
+    <ul class="nav__links" id="navLinks"><span class="nav__hover" aria-hidden="true"></span><li><a href="index.html">Home</a></li><li><a href="o-que-fazemos.html">O Que Fazemos</a></li><li><a href="quem-somos.html">Quem Somos</a></li><li><a href="resultados.html" aria-current="page">Resultados</a></li><li><a href="contato.html">Contato</a></li></ul>
+    <div class="nav__right">
+      <a class="btn btn--primary btn--sm nav__cta-desk" href="https://lamparinahub.com/raiox/" data-magnetic>Sessão Estratégica <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="nav__mobile" id="navMobile" aria-label="Menu"><a href="index.html">Home<span class="accent">→</span></a><a href="o-que-fazemos.html">O Que Fazemos<span class="accent">→</span></a><a href="quem-somos.html">Quem Somos<span class="accent">→</span></a><a href="resultados.html" aria-current="page">Resultados<span class="accent">→</span></a><a href="contato.html">Contato<span class="accent">→</span></a><a class="btn btn--primary" href="https://lamparinahub.com/raiox/">Sessão Estratégica <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></nav>
+</header>
+<main id="main">
+<section class="phero">
+  <div class="lamp" aria-hidden="true"><span class="lamp__beam"></span><canvas class="embers" data-embers></canvas></div>
+  <div class="wrap">
+    <div class="crumb mono" data-hero><a href="index.html">Home</a><span>/</span><b>Resultados</b></div>
+    <h1 data-hero-title><span class="line">Quem já destravou o</span> <span class="line grad">comercial com a gente</span></h1>
+
+    <div class="filter" data-hero role="group" aria-label="Ver por camada">
+      <span class="mono">Ver por camada:</span>
+      <button class="chip" data-filter="aquisicao" aria-pressed="false"><i></i>Aquisição</button>
+      <button class="chip" data-filter="presenca" aria-pressed="false"><i></i>Presença</button>
+      <button class="chip" data-filter="comercial" aria-pressed="false"><i></i>Comercial</button>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight" style="padding-top:0">
+  <div class="wrap">
+    <!--
+      CASES: a grade abaixo é montada pelo main.js a partir do array CASES (assets/js/main.js).
+      Cada case: { logo, cliente, segmento, tempo, camada: 'aquisicao'|'presenca'|'comercial', antes, resultado, citacao }
+      Enquanto o array estiver vazio, a grade não aparece.
+    -->
+    <div class="cases" data-cases></div>
+
+    <div class="logo-wall" data-logowall></div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="cta-band" data-reveal>
+      <div class="cta-band__flame" data-flame></div>
+      <h2 class="cta-band__title" data-split>O próximo case pode ser o seu.</h2>
+      <p class="cta-band__sub">Quer um resultado assim na sua empresa?</p>
+      <a class="btn btn--primary btn--lg cta-band__btn" href="contato.html" data-magnetic>Quero o meu <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__giant" aria-hidden="true"><img src="assets/img/logo.webp" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/logo.webp" alt="Agência Lamparina" width="900" height="346" loading="lazy">
+        <!-- TODO: endereço completo e CNPJ reais -->
+        <p>Santarém, Pará<br><span data-todo="cnpj">CNPJ 00.000.000/0000-00</span></p>
+        <span class="kommo"><i></i>Parceiro Kommo</span>
+      </div>
+      <div>
+        <h4>Menu</h4>
+        <ul><li><a href="index.html">Home</a></li><li><a href="o-que-fazemos.html">O Que Fazemos</a></li><li><a href="quem-somos.html">Quem Somos</a></li><li><a href="resultados.html">Resultados</a></li><li><a href="contato.html">Contato</a></li></ul>
+      </div>
+      <div>
+        <h4>Redes sociais</h4>
+        <ul>
+          <li><a href="https://instagram.com/lamparina.hub/" rel="noopener">Instagram @lamparina.hub</a></li>
+          <li><a href="https://wa.me/5593984128030" rel="noopener">WhatsApp (93) 98412-8030</a></li>
+        </ul>
+        <div class="social">
+          <a href="https://instagram.com/lamparina.hub/" aria-label="Instagram" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+          <a href="https://wa.me/5593984128030" aria-label="WhatsApp" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.1-4.2A8.5 8.5 0 1 1 20.5 12Z"/><path d="M9.3 8.4c.3-.3.7-.3.9.1l.7 1.5c.1.3 0 .6-.2.8l-.5.5c.5 1.1 1.4 2 2.5 2.5l.5-.5c.2-.2.5-.3.8-.2l1.5.7c.4.2.4.6.1.9l-.6.6c-.6.6-1.5.8-2.3.5a7.8 7.8 0 0 1-4.2-4.2c-.3-.8-.1-1.7.5-2.3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Lamparina Hub</span>
+      <!-- TODO: link da Política de Privacidade (texto precisa de revisão jurídica) -->
+      <a href="#" data-todo="privacidade">Política de Privacidade</a>
+    </div>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

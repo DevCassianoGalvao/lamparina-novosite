@@ -1,0 +1,89 @@
+<section class="phero">
+  <div class="lamp" aria-hidden="true"><span class="lamp__beam"></span><canvas class="embers" data-embers></canvas></div>
+  <div class="wrap">
+    <div class="crumb mono" data-hero><a href="index.html">Home</a><span>/</span><b>O Que Fazemos</b></div>
+    <h1 data-hero-title><span class="line">Diagnóstico primeiro.</span> <span class="line grad">Estrutura depois.</span></h1>
+    <p class="lead" data-hero>A maioria das agências vende o mesmo pacote pra todo mundo. A Lamparina funciona diferente: primeiro descobre onde o comercial da sua empresa trava, depois estrutura só o que falta.</p>
+  </div>
+</section>
+
+<!-- ============ EFEITO REPRESA ============ -->
+<section class="section section--tight" style="padding-top:clamp(24px,4vw,48px)">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow mono" data-reveal>Efeito Represa</span>
+      <p class="statement" data-words style="font-size:clamp(1.45rem,2.7vw,2.25rem)">Chamamos isso de Efeito Represa: quando uma camada do comercial trava, tudo que vem depois dela para de fluir, não importa quanto esforço você põe no resto.</p>
+    </div>
+
+    <div class="dam" data-reveal data-dam>
+      <div class="dam__top">
+        <span class="dam__title mono"><span class="pill__dot"></span>Efeito Represa</span>
+        <div class="dam__gates" role="group" aria-label="Camadas">
+          <button class="gate-btn" data-gate="0" aria-pressed="false"><i></i>Aquisição</button>
+          <button class="gate-btn" data-gate="1" aria-pressed="false"><i></i>Presença</button>
+          <button class="gate-btn" data-gate="2" aria-pressed="false"><i></i>Comercial</button>
+        </div>
+      </div>
+      <div class="dam__canvas">
+        <canvas data-dam-canvas aria-hidden="true"></canvas>
+        <div class="dam__labels" data-dam-labels>
+          <div class="dam__lbl" data-lbl="0"><span class="mono">Camada 1</span><b>Aquisição</b></div>
+          <div class="dam__lbl" data-lbl="1"><span class="mono">Camada 2</span><b>Presença</b></div>
+          <div class="dam__lbl" data-lbl="2"><span class="mono">Camada 3</span><b>Comercial</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AS 3 CAMADAS ============ -->
+<section class="section" style="padding-top:clamp(40px,6vw,80px)">
+  <div class="wrap">
+    <div class="stack" data-stack>
+      <div class="stack__vis" aria-hidden="true">
+        <div class="plates" data-plates>
+          <div class="plate" data-i="1"><span>AQUISIÇÃO</span></div>
+          <div class="plate" data-i="2"><span>PRESENÇA</span></div>
+          <div class="plate" data-i="3"><span>COMERCIAL</span></div>
+        </div>
+      </div>
+
+      <div class="stack__list">
+        <article class="card camada" id="aquisicao" data-camada="1" data-spot>
+          <div class="camada__head"><span class="mono">Camada 1</span><span class="camada__ic">{{icon:target}}</span></div>
+          <h3>Aquisição</h3>
+          <p class="camada__for">Pra empresa que não tem lead qualificado e consistente entrando.</p>
+          <ul class="checks">
+            <li>{{icon:checkc}}<span>Gestão de tráfego pago, Meta Ads e Google Ads</span></li>
+            <li>{{icon:checkc}}<span>Criativos pensados pra conversão, não só pra engajamento</span></li>
+            <li>{{icon:checkc}}<span>Relatório em linguagem de negócio, não de métrica solta</span></li>
+          </ul>
+        </article>
+
+        <article class="card camada" id="presenca" data-camada="2" data-spot>
+          <div class="camada__head"><span class="mono">Camada 2</span><span class="camada__ic">{{icon:spark}}</span></div>
+          <h3>Presença</h3>
+          <p class="camada__for">Pra empresa que já tem entrada, mas cuja marca não parece do tamanho que já é.</p>
+          <ul class="checks">
+            <li class="inherit">{{icon:checkc}}<span>Tudo da Camada 1</span></li>
+            <li>{{icon:checkc}}<span>Direção de conteúdo e presença digital, com pauta estratégica</span></li>
+            <li>{{icon:checkc}}<span>Estratégia de marketing digital e offline</span></li>
+          </ul>
+        </article>
+
+        <article class="card camada" id="comercial" data-camada="3" data-spot>
+          <div class="camada__head"><span class="mono">Camada 3</span><span class="camada__ic">{{icon:handshake}}</span></div>
+          <h3>Comercial</h3>
+          <p class="camada__for">Pra empresa que tem entrada e presença, mas cujo time não fecha o que já podia fechar.</p>
+          <ul class="checks">
+            <li class="inherit">{{icon:checkc}}<span>Tudo da Camada 2</span></li>
+            <li>{{icon:checkc}}<span>CRM implantado e configurado</span></li>
+            <li>{{icon:checkc}}<span>Script de atendimento e treinamento comercial</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{cta:Toda represa tem um ponto de pressão.|Quer saber em qual camada sua empresa está?|Descobrir minha camada}}
