@@ -678,6 +678,19 @@
     }
   }
 
+  /* ---------- Contador (+22 especialistas) ---------- */
+  $$("[data-count-to]").forEach((el) => {
+    const to = +el.dataset.countTo;
+    if (reduce || !hasGSAP) return;
+    el.textContent = "0";
+    let done = false;
+    inView(el, (v) => {
+      if (!v || done) return; done = true;
+      const o = { v: 0 };
+      gsap.to(o, { v: to, duration: 1.6, ease: "power2.out", delay: 0.2, onUpdate: () => { el.textContent = Math.round(o.v); } });
+    });
+  });
+
   /* ---------- Odômetro de seis dígitos ---------- */
   const digits = $("[data-digits]");
   if (digits) {
