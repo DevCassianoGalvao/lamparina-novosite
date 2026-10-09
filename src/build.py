@@ -8,7 +8,7 @@ SRC = ROOT / "src" / "pages"
 
 RAIOX = "https://lamparinahub.com/raiox/"  # landing (não usada nos botões)
 FORM = "contato.html#contatoForm"  # destino de todos os botões
-WHATS = "https://wa.me/5593984128030"
+WHATS = "https://wa.me/5593984128030?text=Ol%C3%A1%21%20Gostaria%20de%20receber%20uma%20Sess%C3%A3o%20Estrat%C3%A9gica."  # mensagem pré-pronta
 INSTA = "https://instagram.com/lamparina.hub/"
 
 PAGES = [
